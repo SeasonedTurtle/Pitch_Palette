@@ -3,7 +3,7 @@
 // Profile Setup (Register and Login) with Firebase https://firebase.google.com/codelabs/firebase-auth-in-flutter-apps#4
 // Profile Data Analytics and User Customized UX 
 
-// Tuner and Voice input implementation https://github.com/qiuxiang/tuner/blob/master/app/tuner.js or https://github.com/Slins-23/flutter-fft/blob/master/README.md
+// Tuner and Voice input implementation for different modes should be added (green or red color) and (hit that note game)
 
 
 // ----> Youtube Videos and Procedure implementation
