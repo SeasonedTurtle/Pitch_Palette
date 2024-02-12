@@ -50,8 +50,15 @@ class MyPadding extends StatelessWidget {
         } else { throw ArgumentError("Incorrect Text"); }
       },
       
-      child: Padding(
-        padding: const EdgeInsets.all(10),
+      child: Container(
+        padding: const EdgeInsets.all(2), // Adjust the padding as needed
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: const Color.fromARGB(255, 182, 65, 202), // Border color
+            width: 2.0, // Border width
+          ),
+          borderRadius: BorderRadius.circular(4.0),
+        ),
         child: Stack(
           children: [
             Container(

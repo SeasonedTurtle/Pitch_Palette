@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:senior_project/profile.dart';
+import 'OnPitch.dart';
 import 'pitch.dart';
 import 'square.dart';
+
+const Color mainTheme = Color.fromARGB(255, 186, 47, 211);
+//const Color darkTheme = Color.fromARGB(255, 30, 29, 31);
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
@@ -13,10 +16,13 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 186, 47, 211),
+        backgroundColor: mainTheme,
         title: Text(title),
       ),
-      body: Center(
+      body: Container(
+        height: 800,
+        width: 800,
+        color: mainTheme,
         child: ListView(
           children: const <Widget>[
             MyPadding(text: "Singing"),
@@ -46,14 +52,14 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              title: const Text('Profile'),
+              title: const Text('Pitch Game'),
               onTap: () {
                 Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ProfilePage()),
-              );
+                  context,
+                  MaterialPageRoute(builder: (context) => const OnPitch()),
+                );
               },
-            ),
+            ),            
           ],
         ),
       ),

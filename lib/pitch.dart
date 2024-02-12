@@ -21,14 +21,10 @@ class ApplicationState extends State<Pitch> {
 
   _initialize() async {
     print("Starting recorder...");
-    // print("Before");
-    // bool hasPermission = await flutterFft.checkPermission();
-    // print("After: " + hasPermission.toString());
 
     // Keep asking for mic permission until accepted
     while (!(await flutterFft.checkPermission())) {
       flutterFft.requestPermission();
-      // IF DENY QUIT PROGRAM
     }
 
     // await flutterFft.checkPermissions();
@@ -76,7 +72,7 @@ class ApplicationState extends State<Pitch> {
             backgroundColor: const Color.fromARGB(255, 186, 47, 211),
             title: const Text("Pitch Check"), //dynimically change index
           ),
-          backgroundColor: Colors.purple,
+          backgroundColor: const Color.fromARGB(255, 186, 47, 211),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

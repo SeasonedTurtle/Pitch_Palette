@@ -37,12 +37,12 @@ List<String> singExcercises = [
   "Resonance", 
   "Range"
   ];
-  
+
 List<String> singLinks = [
-  'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4', 
-  "link2",
-  "link3",
-  "link4"
+  'https://www.youtube.com/watch?v=YCLyAmXtpfY', 
+  "https://www.youtube.com/watch?v=OtxPre6RvaA",
+  "https://www.youtube.com/watch?v=zH37yxXzoj8",
+  "https://www.youtube.com/watch?v=891KuCEWulE"
   ]; 
 
 
@@ -54,38 +54,37 @@ List<String> speechExcercises = [
   ];
 
 List<String> speechLinks = [
-  "link6",
-  "link7",
-  "link8",
-  "link9"
+  "https://www.youtube.com/watch?v=qjm53hzsKPw",
+  "https://www.youtube.com/watch?v=kTay3fv6DW4",
+  "https://www.youtube.com/watch?v=d67Kf9UZYZA",
+  "https://www.youtube.com/watch?v=D21pN7KQlcg"
   ];
 
-
 List<String> feminineVoiceExercises = [
-  "Breath Control and Relaxation",
-  "Tone Softening Techniques",
-  "Emotional Expression in Speech",
-  "Articulation Practice",
+  "Head Voice",
+  "Vocal Tone",
+  "Light Vocal Weight",
+  "Pitch Mimicry",
 ];
 
 List<String> feminineVoiceLinks = [
-  "link28",
-  "link29",
-  "link30",
-  "link31",
+  "https://www.youtube.com/watch?v=sOoZvtJEC-0",
+  "https://www.youtube.com/watch?v=iMO6fQJKwnc",
+  "https://www.youtube.com/watch?v=F6Kbi6M5vec",
+  "https://www.youtube.com/watch?v=D21pN7KQlcg&t=1s",
 ];
 
 
 List<String> masculineVoiceExercises = [
   "Resonance",
-  "Diaphragm Engagement",
-  "Articulation and Clarity Practice",
-  "Pitch Control Exercises",
+  "Articulation",
+  "Clarity Practice",
+  "Chest Voice",
 ];
 
 List<String> masculineVoiceLinks = [
-  "link21",
-  "link22",
-  "link23",
-  "link24"
+  "https://www.youtube.com/watch?v=lxjXoopvcRQ&list=PLjumkJUG-60JDF5DK9MH96jwcM6zNCvD0&index=4",
+  "https://www.youtube.com/watch?v=3Qjr9nWh5cU",
+  "https://www.youtube.com/watch?v=kTay3fv6DW4&t=1s",
+  "https://www.youtube.com/watch?v=CVUZeh8bhPc",
 ];

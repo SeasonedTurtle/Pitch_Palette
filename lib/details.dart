@@ -16,7 +16,10 @@ class DetailsScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 186, 47, 211),
         title: Text(goal),
       ),
-      body: Center(
+      body: Container(
+        height: 800,
+        width: 800,
+        color: const Color.fromARGB(255, 186, 47, 211),
         child: ListView( 
           children: <Widget>[
             Lessons(text: setLink2(goal, 1), id: 1, goals: goal), 
@@ -52,8 +55,15 @@ class Lessons extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const VideoPlayerScreen())
           );
       },
-      child: Padding(
-        padding: const EdgeInsets.all(10),
+      child: Container(
+        padding: const EdgeInsets.all(2), // Adjust the padding as needed
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: const Color.fromARGB(255, 182, 65, 202), // Border color
+            width: 2.0, // Border width
+          ),
+          borderRadius: BorderRadius.circular(4.0),
+        ),
         child: Stack(
           children: [
             Container(
@@ -74,6 +84,7 @@ class Lessons extends StatelessWidget {
                 ),
               ),
             ),
+            // Maybe Add Pictures
             // Positioned (
             //   bottom: 10,
             //   right: 0,
@@ -89,52 +100,3 @@ class Lessons extends StatelessWidget {
     );
   }
 }
-
-// class Excercises extends StatelessWidget {
-//   final String passage;
-
-//   const Excercises({
-//     super.key,
-//     required this.passage, 
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {  
-//     return Scaffold(
-//       appBar: AppBar(
-//         centerTitle: true,
-//         backgroundColor: const Color.fromARGB(255, 186, 47, 211),
-//       ),
-//       body: Center(
-//         child: 
-//           Padding(
-//             padding: const EdgeInsets.all(10),
-//               child: Stack(
-//           children: [
-//               Container(
-//                 height: 200, 
-//                 color: const Color.fromARGB(255, 182, 65, 202),
-//                 // Call video player widget
-//                 child: const VideoPlayerScreen(),
-//               ),
-//             Positioned(
-//               bottom: 0,
-//               left: 0,
-//               child: Padding(
-//                 padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-//                 child: Text(
-//                   passage,
-//                   style: const TextStyle(
-//                     color: Colors.white,
-//                     fontSize: 14,
-//                   ),
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     ),
-//     );
-//   }
-// }

@@ -1,9 +1,3 @@
 // TODO: 
-
-// Profile Setup (Register and Login) with Firebase https://firebase.google.com/codelabs/firebase-auth-in-flutter-apps#4
-// Profile Data Analytics and User Customized UX 
-
-// Tuner and Voice input implementation for different modes should be added (green or red color) and (hit that note game)
-
-
-// ----> Youtube Videos and Procedure implementation
+// ----> Download the Youtube videos and compress them for performance
+// ----> Better UI and UX

@@ -54,7 +54,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
               child: Stack(
           children: [
               Container(
-                height: 800, 
+                height: 800,
+                width: 800, 
                 color: const Color.fromARGB(255, 182, 65, 202),
                 // Call video player widget
                 child: FutureBuilder(
