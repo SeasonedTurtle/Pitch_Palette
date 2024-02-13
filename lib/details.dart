@@ -46,13 +46,13 @@ class Lessons extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) { 
-    setLink1(goals, id);
+  Widget build(BuildContext context) {
+    final String video = setLink1(goals, id); 
     return GestureDetector(
       onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const VideoPlayerScreen())
+            MaterialPageRoute(builder: (context) => VideoPlayerScreen(videoFile: video))
           );
       },
       child: Container(

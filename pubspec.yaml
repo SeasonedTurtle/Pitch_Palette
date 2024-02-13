@@ -72,8 +72,11 @@ flutter:
     - icons/masculine.png
     - icons/sing.png
     - icons/speech.png
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+    - videos/5MINUTEVOCALWARMUP.mp4
+    - videos/BreathingWorkoutForSingers.mp4
+    - videos/RANGEEXTENSIONVOCALEXERCISE.mp4
+    - videos/RESONANCEVOCALEXERCISE.mp4
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -13,6 +13,7 @@ class OnPitch extends StatefulWidget {
 }
 
 class ApplicationState extends State<OnPitch> {
+  int amountOfSeconds = 2;
   static const List<String> notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
   double? targetFrequency;
   String? targetNote;
@@ -79,7 +80,7 @@ class ApplicationState extends State<OnPitch> {
 
   // Function to start a timer to change the target note after a second
   void startTargetNoteTimer() {
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(Duration(seconds: amountOfSeconds), (timer) {
       if (isRecording && flutterFft.getNote == targetNote) {
         setState(() {
           isNoteHit = true;
@@ -94,6 +95,76 @@ class ApplicationState extends State<OnPitch> {
         });
       }
     });
+  }
+
+  // Function to show the popup page with directions
+  void _showDirectionsPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return  AlertDialog(
+          title: const Text('Directions'),
+          content: const Text('Adjust your singing to hit the target note! Use the current note and frequency to see how close you are. '),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _changeDifficulty(BuildContext context) {
+    showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Change Difficulty'),
+        content: Column(
+          children: [
+            const Text('Select a difficulty level (2-10):'),
+            DropdownButton<int>(
+              value: amountOfSeconds,
+              items: List.generate(9, (index) => index + 2)
+                  .map((int value) {
+                    return DropdownMenuItem<int>(
+                      value: value,
+                      child: Text(value.toString()),
+                    );
+                  })
+                  .toList(),
+              onChanged: (int? value) {
+                if (value != null) {
+                  amountOfSeconds = value;
+                }
+              },
+            ),
+          ],
+        ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Apply the selected difficulty
+                // You can perform any actions needed with the selectedDifficulty
+                print('Selected Difficulty: $amountOfSeconds');
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Apply'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -113,8 +184,11 @@ class ApplicationState extends State<OnPitch> {
     startTargetNoteTimer();
     super.initState();
     _initialize();
+    Future.delayed(Duration.zero, () {
+      _showDirectionsPopup(context);
+      _changeDifficulty(context);
+   });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +202,32 @@ class ApplicationState extends State<OnPitch> {
         centerTitle: true,
         backgroundColor: bodyColor,
         title: const Text("Hit The Target Pitch"),
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: (String result) {
+              // Handle menu item selection
+              if (result == 'Directions') {
+                // Open the popup page with directions
+                _showDirectionsPopup(context);
+              }
+              if (result == 'Difficulty') {
+                // Open the popup page with directions
+                _changeDifficulty(context);
+              }
+            },
+            itemBuilder: (BuildContext context) => [
+              const PopupMenuItem<String>(
+                value: 'Directions',
+                child: Text('Show Directions'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'Difficulty',
+                child: Text('Change Difficulty'),
+              ),             
+            ],
+            
+          ),
+        ],
       ),
       body: Container(
         height: 800,
@@ -141,19 +241,25 @@ class ApplicationState extends State<OnPitch> {
                     "Target Note: $targetNote",
                     style: const TextStyle(fontSize: 50),
                   )
-                : const Text("Not Recording", style: TextStyle(fontSize: 20)),
+                : const Text("Not Recording", style: TextStyle(fontSize: 35)),
+            isRecording
+                ? Text(
+                    "Required Duration: $amountOfSeconds",
+                    style: const TextStyle(fontSize: 20),
+                  )
+                : const Text("", style: TextStyle(fontSize: 20)),
             isRecording
                 ? Text(
                     "Current note: ${note!}",
                     style: const TextStyle(fontSize: 20),
                   )
-                : const Text("Not Recording", style: TextStyle(fontSize: 35)),
+                : const Text("Can't get note", style: TextStyle(fontSize: 35)),
             isRecording
                 ? Text(
                     "Current frequency: ${frequency!.toStringAsFixed(2)}",
                     style: const TextStyle(fontSize: 20),
                   )
-                : const Text("Not Recording", style: TextStyle(fontSize: 35)),
+                : const Text("Can't get frequency", style: TextStyle(fontSize: 35)),
           ],
         ),
       ),

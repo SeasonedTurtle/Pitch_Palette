@@ -1,21 +1,18 @@
-dynamic link1;
 dynamic link2;
 
-void setLink1(String goal, int index) {
+String setLink1(String goal, int index) {
+  dynamic link1;
   index = index - 1;
   if (goal == "Singing") {
     link1 = singLinks[index];
-    //link2 = singExcercises[index];
   } else if (goal == "Speech") {
     link1 = speechLinks[index];
-    //link2 = speechExcercises[index];
   } else if (goal == "Masculine") {
     link1 = masculineVoiceLinks[index];
-    //link2 = masculineVoiceExercises[index];
   } else if (goal == "Feminine") {
     link1 = feminineVoiceLinks[index];
-    //link2 = feminineVoiceExercises[index];
-  } else { throw ArgumentError("Incorrect Index or Text"); }
+  }
+  return link1;
 }
 
 String setLink2(String goal, int index) {
@@ -39,10 +36,10 @@ List<String> singExcercises = [
   ];
 
 List<String> singLinks = [
-  'https://www.youtube.com/watch?v=YCLyAmXtpfY', 
-  "https://www.youtube.com/watch?v=OtxPre6RvaA",
-  "https://www.youtube.com/watch?v=zH37yxXzoj8",
-  "https://www.youtube.com/watch?v=891KuCEWulE"
+  "videos/5MINUTEVOCALWARMUP.mp4", 
+  "videos/BreathingWorkoutForSingers.mp4",
+  "videos/RANGEEXTENSIONVOCALEXERCISE.mp4",
+  "videos/RESONANCEVOCALEXERCISE.mp4"
   ]; 
 
 
