@@ -43,6 +43,8 @@ dependencies:
   firebase_ui_auth: ^1.12.1
   sqflite: ^2.3.2
   path: ^1.8.3
+  quiver: ^3.2.1
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
@@ -72,11 +74,6 @@ flutter:
     - icons/masculine.png
     - icons/sing.png
     - icons/speech.png
-    - videos/5MINUTEVOCALWARMUP.mp4
-    - videos/BreathingWorkoutForSingers.mp4
-    - videos/RANGEEXTENSIONVOCALEXERCISE.mp4
-    - videos/RESONANCEVOCALEXERCISE.mp4
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

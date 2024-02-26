@@ -54,6 +54,12 @@ class ApplicationState extends State<Pitch> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    flutterFft.stopRecorder(); // Stop the recorder
+  }
+
+  @override
   void initState() {
     isRecording = flutterFft.getIsRecording;
     frequency = flutterFft.getFrequency;

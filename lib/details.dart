@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'videoplayer.dart';
+import 'exercisepage.dart';
 import 'links.dart';
-
-// Display Containers that when clicked which have a caption giving insight to the container
-// Include youtube video and a description of how to do the excercise
 
 class DetailsScreen extends StatelessWidget {
   final String goal;
@@ -47,12 +44,13 @@ class Lessons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String video = setLink1(goals, id); 
     return GestureDetector(
       onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => VideoPlayerScreen(videoFile: video))
+            //MaterialPageRoute(builder: (context) => VideoPlayerScreen(videoFile: video))
+            MaterialPageRoute(builder: (context) => MetronomeClass(goals: goals, id: id, exercises: setLink3(goals, id)))
+
           );
       },
       child: Container(

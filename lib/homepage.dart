@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'OnPitch.dart';
+import 'onpitch.dart';
 import 'pitch.dart';
 import 'square.dart';
 

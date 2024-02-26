@@ -120,31 +120,36 @@ class ApplicationState extends State<OnPitch> {
 
   void _changeDifficulty(BuildContext context) {
     showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text('Change Difficulty'),
-        content: Column(
-          children: [
-            const Text('Select a difficulty level (2-10):'),
-            DropdownButton<int>(
-              value: amountOfSeconds,
-              items: List.generate(9, (index) => index + 2)
-                  .map((int value) {
-                    return DropdownMenuItem<int>(
-                      value: value,
-                      child: Text(value.toString()),
-                    );
-                  })
-                  .toList(),
-              onChanged: (int? value) {
-                if (value != null) {
-                  amountOfSeconds = value;
-                }
-              },
-            ),
-          ],
-        ),
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Change Difficulty'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min, // Set the mainAxisSize to min
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 8), // Add some spacing at the top
+              const Text('Select a difficulty level (2-10):'),
+              const SizedBox(height: 8), // Add spacing between text and dropdown
+              DropdownButton<int>(
+                value: amountOfSeconds,
+                items: List.generate(9, (index) => index + 2)
+                    .map((int value) {
+                      return DropdownMenuItem<int>(
+                        value: value,
+                        child: Text(value.toString()),
+                      );
+                    })
+                    .toList(),
+                onChanged: (int? value) {
+                  if (value != null) {
+                    amountOfSeconds = value;
+                  }
+                },
+              ),
+              const SizedBox(height: 8), // Add some spacing at the bottom
+            ],
+          ),
           actions: [
             TextButton(
               onPressed: () {
@@ -156,7 +161,7 @@ class ApplicationState extends State<OnPitch> {
               onPressed: () {
                 // Apply the selected difficulty
                 // You can perform any actions needed with the selectedDifficulty
-                print('Selected Difficulty: $amountOfSeconds');
+                print('Selected Difficulty: $amountOfSeconds seconds');
                 Navigator.of(context).pop(); // Close the dialog
               },
               child: const Text('Apply'),
@@ -167,10 +172,12 @@ class ApplicationState extends State<OnPitch> {
     );
   }
 
+
   @override
   void dispose() {
     timer.cancel(); // Cancel the timer to avoid memory leaks
     super.dispose();
+    flutterFft.stopRecorder(); // Stop the recorder
   }
 
   @override
@@ -184,10 +191,6 @@ class ApplicationState extends State<OnPitch> {
     startTargetNoteTimer();
     super.initState();
     _initialize();
-    Future.delayed(Duration.zero, () {
-      _showDirectionsPopup(context);
-      _changeDifficulty(context);
-   });
   }
 
   @override
@@ -225,7 +228,6 @@ class ApplicationState extends State<OnPitch> {
                 child: Text('Change Difficulty'),
               ),             
             ],
-            
           ),
         ],
       ),
