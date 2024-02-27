@@ -69,7 +69,7 @@ class MetronomeState extends State<MetronomeClass> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Practice'),
-          content: Container(
+          content: SizedBox(
             height: MediaQuery.of(context).size.height * 0.6, // Adjust the height as needed
             child: SingleChildScrollView(
               child: Column(
@@ -111,6 +111,20 @@ void _changeBPM(BuildContext context) {
           child: TextFormField(
             controller: bpmController,
             keyboardType: TextInputType.number,
+            onChanged: (value) {
+              final number = int.tryParse(value);
+              if (number != null && number >= 30 && number <= 300) {
+                setState(() {
+                  tempo = number;
+                  _metronome = Metronome.epoch(Duration(milliseconds: (60000 / tempo).round()));
+
+                  if (_isPlaying) {
+                    _subscription.cancel();
+                    _subscription = _metronome.listen((d) => SystemSound.play(SystemSoundType.click));
+                  }
+                });
+              }
+            },
             validator: (value) {
               final number = int.tryParse(value!);
               if (number == null || number < 30 || number > 300) {
@@ -127,9 +141,6 @@ void _changeBPM(BuildContext context) {
           TextButton(
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                // Set the value of $tempo to the entered BPM value
-                tempo = int.parse(bpmController.text);
-                print('Selected BPM: $tempo');
                 Navigator.of(context).pop(); // Close the dialog
               }
             },
@@ -145,8 +156,16 @@ void _changeBPM(BuildContext context) {
       );
     },
   );
-  }
+}
 
+
+  @override
+  void dispose() {
+    // Cancel the subscription and stop the metronome when the widget is disposed
+    _subscription.cancel();
+    _metronome.drain();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -157,6 +176,12 @@ void _changeBPM(BuildContext context) {
           centerTitle: true,
           backgroundColor: _txtColor,
           title: const Text("Description"),
+          leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // This will pop the current screen and go back
+          },
+        ),
           actions: [
           PopupMenuButton<String>(
             onSelected: (String result) {
