@@ -27,6 +27,8 @@ class ApplicationState extends State<OnPitch> {
   late Timer timer;
   String? previousNote = "";
 
+  late StreamSubscription<List<dynamic>> _recorderStateSubscription;
+
   _initialize() async {
   print("Starting recorder...");
 
@@ -35,12 +37,11 @@ class ApplicationState extends State<OnPitch> {
     flutterFft.requestPermission();
   }
 
-  // await flutterFft.checkPermissions();
   await flutterFft.startRecorder();
   print("Recorder started...");
   setState(() => isRecording = flutterFft.getIsRecording);
 
-  flutterFft.onRecorderStateChanged.listen(
+  _recorderStateSubscription = flutterFft.onRecorderStateChanged.listen(
       (data) => {
             print("Changed state, received: $data"),
             setState(
@@ -122,62 +123,68 @@ class ApplicationState extends State<OnPitch> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Change Difficulty'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min, // Set the mainAxisSize to min
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 8), // Add some spacing at the top
-              const Text('Select a difficulty level (2-10):'),
-              const SizedBox(height: 8), // Add spacing between text and dropdown
-              DropdownButton<int>(
-                value: amountOfSeconds,
-                items: List.generate(9, (index) => index + 2)
-                    .map((int value) {
-                      return DropdownMenuItem<int>(
-                        value: value,
-                        child: Text(value.toString()),
-                      );
-                    })
-                    .toList(),
-                onChanged: (int? value) {
-                  if (value != null) {
-                    amountOfSeconds = value;
-                  }
-                },
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return AlertDialog(
+              title: const Text('Change Difficulty'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 8),
+                  const Text('Select a difficulty level (2-10):'),
+                  const SizedBox(height: 8),
+                  DropdownButton<int>(
+                    value: amountOfSeconds,
+                    items: List.generate(9, (index) => index + 2)
+                        .map((int value) {
+                          return DropdownMenuItem<int>(
+                            value: value,
+                            child: Text(value.toString()),
+                          );
+                        })
+                        .toList(),
+                    onChanged: (int? value) {
+                      if (value != null) {
+                        setState(() {
+                          amountOfSeconds = value;
+                        });
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 8),
+                ],
               ),
-              const SizedBox(height: 8), // Add some spacing at the bottom
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Apply the selected difficulty
-                // You can perform any actions needed with the selectedDifficulty
-                print('Selected Difficulty: $amountOfSeconds seconds');
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('Apply'),
-            ),
-          ],
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // Apply the selected difficulty
+                    // You can perform any actions needed with the selectedDifficulty
+                    print('Selected Difficulty: $amountOfSeconds seconds');
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                  child: const Text('Apply'),
+                ),
+              ],
+            );
+          },
         );
       },
     );
   }
 
-
   @override
   void dispose() {
-    timer.cancel(); // Cancel the timer to avoid memory leaks
+    _recorderStateSubscription.cancel();
+    timer.cancel(); // Cancel any timers
+    flutterFft.stopRecorder(); // Stop any ongoing processes
     super.dispose();
-    flutterFft.stopRecorder(); // Stop the recorder
   }
 
   @override

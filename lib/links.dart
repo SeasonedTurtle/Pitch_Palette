@@ -130,6 +130,8 @@ Map<String, List<String>> singDirectionsMap = {
     "\nSirens:\n   - Start with a mid-range pitch and smoothly slide up and down the scale.\n   - Pay attention to the connection between chest and head voice.\n   - Gradually extend the range of your sirens.",
     
     "\nOctave Jumps:\n   - Jump between octaves, starting with a comfortable range.\n   - Ensure a smooth transition without straining.\n   - Gradually expand the interval of the jumps.",
+
+    "Note:  High note technique: many beginners usually crumble their mouth into a rectangualr shape to hit the high notes,\ntherefore, the tone comes out irritating and can strain your throat. \nWhen it's high note time, drop your jaw (practice high note exercises with dropping your jaw... \nIf you find struggle, place your index and middle finger beneath your chin so that you'll make it a habit to sing with your jaw down)"
   ],
 };
 
@@ -185,51 +187,81 @@ List<String> feminineVoiceExercises = [
   "Head Voice",
   "Vocal Tone",
   "Light Vocal Weight",
-  "Pitch Mimicry",
-];
-
-List<String> feminineVoiceLinks = [
-  "https://www.youtube.com/watch?v=sOoZvtJEC-0",
-  "https://www.youtube.com/watch?v=iMO6fQJKwnc",
-  "https://www.youtube.com/watch?v=F6Kbi6M5vec",
-  "https://www.youtube.com/watch?v=D21pN7KQlcg&t=1s",
+  "Resonance",
 ];
 
 Map<String, List<String>> feminineVoiceDirections = { //update
   // Head Voice
-  "Head Voice": [
-    "1. Focus on accessing your 'head voice,' a lighter and higher register.",
-    "2. Practice scales and exercises that encourage resonance in the head.",
-    "3. Aim for a clear and bright tone while maintaining comfort in the higher range.",
+  'Head Voice': [
+      "To use your head voice, maintain good posture, relax your throat, and allow the sound to resonate in your head.",
+      "\nLight and Airy Tone:\n   - Practice producing a light, airy tone by gently engaging your head voice: 'mi mi mi mi mi'",
+      "\nAscending Five-Tone Scale:\n   - Sing an ascending five-tone scale, starting from a comfortable pitch in your head voice and moving higher. Focus on maintaining clarity and control.",
+      "\nLegato Head Voice Drill:\n   - Perform legato (smooth and connected) notes on a single vowel in your head voice. Emphasize a seamless transition between notes.",
+      "\nHead Voice Scales with Vowel Variation:\n   - Sing an ascending or descending scale using different vowels. Pay attention to the resonance in your head voice for each vowel.",
+      "\nAscending Octave Jumps:\n   - Sing an ascending octave jump, emphasizing the higher notes to strengthen your head voice. Maintain control and clarity.",
+      "\nSirens with Head Resonance:\n   - Perform siren-like sounds starting from a mid-range pitch, paying attention to vibrations in your head.",
   ],
 
   // Vocal Tone
   "Vocal Tone": [
-    "1. Experiment with producing a lighter and more delicate vocal tone.",
-    "2. Use breath support to achieve a controlled and steady tone.",
-    "3. Work on achieving a warm and inviting quality in your voice.",
+    "Dynamic Range Exploration:\n   - Explore a wide dynamic range, practicing both soft and loud tones to enhance expressiveness.",
+    "Nasal Resonance Exercise:\n   - Experiment with nasal resonance to add character to your tone. Be mindful of balance and avoid excessive nasal sound.",
+    "Breathy Tone Variation:\n   - Intentionally incorporate breathiness into your tone for a softer and intimate quality. Control the level of breathiness as needed.",
+    "Emotional Inflection:\n   - Infuse your vocal tone with emotional expression. Practice conveying different emotions through your voice.",
+    "Vowel Modification Drill:\n   - Experiment with modifying vowels to achieve different tonal colors. Explore the impact of vowel shapes on your overall vocal tone.",
+    "Mouth Shape Awareness:\n   - Pay attention to the shape of your mouth while singing. Experiment with different shapes to influence the resonance and tone.",
   ],
 
   // Light Vocal Weight
+// Light Vocal Weight
   "Light Vocal Weight": [
-    "1. Emphasize a light vocal weight by avoiding excessive tension.",
-    "2. Practice relaxation techniques to achieve a more effortless sound.",
-    "3. Focus on a gentle and smooth vocal delivery.",
+    "1. Say 'awww' as if talking to a cute puppy or kitten",
+    "\n2. Raise pitch if needed",
+    "\n3. Always make sure to come down to where you intend to speak to avoid strain at a high pitch",
+    "\nNote: M1, the chest voice, is lower and powerful. M2, the falsetto, is higher and breathier.\n"
+    "\n1. Make a light, hollow M2 sound like an owl hoot:",
+    "   \n- This should be extremely relaxed and not very loud",
+    "\n2. Let the pitch fall down to a speaking level:",
+    "   \n- A lower pitch will be easier to transition to M1 (chest voice)",
+    "\n3. Get almost imperceptibly heavier / louder:",
+    "   \n- This should make you transition from M2 to M1",
+    "   \n- If you don't transition, try getting heavier at a lower pitch",
+    "   \n- Gradually add weight and volume to your sound",
+    "\n4. Make sure you're not in M2:",
+    "   \n- Slide down to the bottom of your range if you are not sure",
+    "   \n- If you have a voice break on the way, then you were likely in M2",
   ],
 
-  // Pitch Mimicry
-  "Pitch Mimicry": [
-    "1. Listen to and mimic the pitch patterns of feminine voices.",
-    "2. Pay attention to intonation, inflections, and pitch variations.",
-    "3. Gradually incorporate these elements into your own voice.",
+  'Resonance': [
+    '1. Whisper a word like "part" or just "whisper"',
+    '\n2. Make the whisper "lower" (this sounds like pitch, but it\'s not)',
+    '\n3. Make it as high as you can without straining',
+    '   \n- The loudness of the whisper is how constricted it is, so make it quiet, but not completely silent',
+    '\n4. Either go to resonance stepping or:',
+    '   \n- Make the sound light and airy to remove constriction',
+    '\n5. Go into "la", "pa" or "ya" ("ha" is more likely to encourage constriction):',
+    '   \n- Clean up the sound immediately by repeating the "la"',
+    '   \n- Say "pah" or "puh" a few times',
+    '   \n- Go into speech',
+    '\n1. Go to a goofy, low resonance, hollow sound at a medium pitch:',
+    '   \n- Say a word or phrase like "one two three"',
+    '   \n- You can use a yawn to get this sort of sound',
+    '   \n- 150-250hz is a good range to do this in but any pitch is ok',
+    '\n2. Stop pushing the resonance down, and go back to neutral:',
+    '   \n- Say the same phrase / word as before',
+    '   \n- This will raise the resonance naturally back to default',
+    '\n3. Go even higher and say the same phrase:',
+    '   \n- Make sure that if it becomes rough, to clean it up before speaking at that position',
+    '\n4. Use an unvoiced exercise to get better control and then come back to this exercise to apply it',
   ],
+
 };
 
 
 List<String> masculineVoiceExercises = [
   "Resonance",
   "Articulation",
-  "Clarity Practice",
+  "Clarity",
   "Chest Voice",
 ];
 
@@ -249,22 +281,29 @@ Map<String, List<String>> masculineVoiceDirections = {
     "2. Practice consonant and vowel sounds separately.",
     "3. Use mirror exercises to observe and refine your mouth and tongue movements.",
     "\nRepeat these phrases: ",
-    "Mommy made me mash my M&Ms",
-    "Ma may me ma moo I’m a MIMO",
-    "Yogi Mogu yo emo yogi Mogu yo",
-    "Lolly lolly lolly lolly lolly lolly law",
-    "PA PHA boo boo",
-    "Mabel Mabel Mabel Mabel Mabel man"
+    "\nMommy made me mash my M&Ms",
+    "\nMa may me ma moo I’m a MIMO",
+    "\nYogi Mogu yo emo yogi Mogu yo",
+    "\nLolly lolly lolly lolly lolly lolly law",
+    "\nPA PHA boo boo",
+    "\nMabel Mabel Mabel Mabel Mabel man"
   ],
 
-  'Clarity Practice': [ //update
+  'Clarity': [ //update
     "Clear Pronunciation:\n   - Practice clear pronunciation of words and phrases.",
     "Sibilance Exercises:\n   - Focus on sibilant sounds (e.g., 's' and 'sh') for clarity.",
+    "Lip Trills:\n   - Relax your facial muscles.\n   - Part your lips slightly and blow air through, creating a trill-like sound.\n   - Move smoothly through your vocal range, gradually increasing the pitch.",
     "Sentence Stress:\n   - Experiment with emphasizing different words in sentences.",
   ],
 
-  'Chest Voice': [ //update
-    "Low-Range Exercises:\n   - Explore your lower vocal range with various exercises.",
-    "Resonant Speech:\n   - Relax and breath with your stomach and speak with your diaphragm ",
-  ],
+'Chest Voice': [
+    "To use your chest voice, relax your body, breathe in deeply with your stomach, and speak from your diaphragm.",
+    "\nStaccato Chest Voice Drill:\n   - Perform staccato notes on a single vowel, emphasizing a strong chest resonance. Increase the speed gradually, ensuring clarity and power in each note.",
+    "\nChest Voice Scales with Vowel Variation:\n   - Sing a descending or ascending scale using different vowels. Pay attention to the resonance in your chest voice for each vowel, making adjustments as needed.",
+    "\nMum or Bum Exercise:\n   - Sing a sustained 'mum' or 'bum' on a descending scale, emphasizing a connected and supported sound.",
+    "\nVocalization:\n   - Begin with a sigh or yawn vocalization, maintaining a deep, resonant chest voice production.",
+    "\nSirens with Chest Resonance:\n   - Perform siren-like sounds starting from a mid-range pitch, paying attention to vibrations in your chest.",
+    "\nInterval Leaps in Chest Voice:\n   - Leap to different notes within your chest voice range, maintaining clarity and resonance.",
+    "\nChest Voice Arpeggios:\n   - Sing arpeggios in your chest voice, starting at a moderate pace and gradually increasing speed.",
+],
 };

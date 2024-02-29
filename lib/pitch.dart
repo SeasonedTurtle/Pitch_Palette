@@ -1,5 +1,5 @@
 // ignore_for_file: avoid_print
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_fft/flutter_fft.dart';
 
@@ -18,6 +18,7 @@ class ApplicationState extends State<Pitch> {
   bool? onPitch;
 
   FlutterFft flutterFft = FlutterFft();
+  late StreamSubscription<List<dynamic>>? _recorderStateSubscription;
 
   _initialize() async {
     print("Starting recorder...");
@@ -32,7 +33,7 @@ class ApplicationState extends State<Pitch> {
     print("Recorder started...");
     setState(() => isRecording = flutterFft.getIsRecording);
 
-    flutterFft.onRecorderStateChanged.listen(
+    _recorderStateSubscription = flutterFft.onRecorderStateChanged.listen(
         (data) => {
               print("Changed state, received: $data"),
               setState(
@@ -55,6 +56,7 @@ class ApplicationState extends State<Pitch> {
 
   @override
   void dispose() {
+    _recorderStateSubscription?.cancel();
     super.dispose();
     flutterFft.stopRecorder(); // Stop the recorder
   }
@@ -75,7 +77,7 @@ class ApplicationState extends State<Pitch> {
     return Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            backgroundColor: const Color.fromARGB(255, 186, 47, 211),
+            backgroundColor: const Color.fromARGB(255, 185, 35, 211),
             title: const Text("Pitch Check"), //dynimically change index
           ),
           backgroundColor: const Color.fromARGB(255, 186, 47, 211),
