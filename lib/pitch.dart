@@ -53,6 +53,32 @@ class ApplicationState extends State<Pitch> {
         },
         onDone: () => {print("Isdone")});
   }
+  
+  Widget box(String text) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double boxWidthPercentage = 0.8; // Adjust this percentage as needed
+
+    double boxWidth = screenWidth * boxWidthPercentage;
+
+    return Container(
+      width: boxWidth,
+      padding: const EdgeInsets.all(2), // Adjust the padding as needed
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: const Color.fromARGB(255, 182, 65, 202), // Border color
+          width: 2.0, // Border width
+        ),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 30,
+        ),
+      )
+    );
+  }
 
   @override
   void dispose() {
@@ -86,14 +112,14 @@ class ApplicationState extends State<Pitch> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 isRecording!
-                    ? Text("Current note: ${note!},${octave!.toString()}",
-                        style: const TextStyle(fontSize: 30))
-                    : const Text("Not Recording", style: TextStyle(fontSize: 35)),
+                    ? box("Note: ${note!},${octave!.toString()}")
+                    : box("Not Recording"),
+                const SizedBox(
+                  height: 20,
+                ),
                 isRecording!
-                    ? Text(
-                        "Current frequency: ${frequency!.toStringAsFixed(2)}",
-                        style: const TextStyle(fontSize: 30))
-                    : const Text("Not Recording", style: TextStyle(fontSize: 35))
+                    ? box("Frequency: ${frequency!.toStringAsFixed(2)}")
+                    : box("Not Recording")
               ],
             ),
           ),

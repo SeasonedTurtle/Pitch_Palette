@@ -28,12 +28,12 @@ class MetronomeState extends State<MetronomeClass> {
 
   Metronome _metronome =
       Metronome.epoch(Duration(milliseconds: (60000 / tempo).round()));
-  late StreamSubscription<DateTime> _subscription;
+  late StreamSubscription<DateTime>? _subscription;
 
   void _play() {
     setState(() {
       if (_isPlaying) {
-        _subscription.cancel();
+        _subscription?.cancel();
         _isPlaying = false;
 
         _bkgColor = Colors.red;
@@ -56,7 +56,7 @@ class MetronomeState extends State<MetronomeClass> {
           Duration(milliseconds: (60000 / tempo).round()));
 
       if (_isPlaying) {
-        _subscription.cancel();
+        _subscription?.cancel();
         _subscription =
             _metronome.listen((d) => SystemSound.play(SystemSoundType.click));
       }
@@ -119,7 +119,7 @@ void _changeBPM(BuildContext context) {
                   _metronome = Metronome.epoch(Duration(milliseconds: (60000 / tempo).round()));
 
                   if (_isPlaying) {
-                    _subscription.cancel();
+                    _subscription?.cancel();
                     _subscription = _metronome.listen((d) => SystemSound.play(SystemSoundType.click));
                   }
                 });
@@ -162,7 +162,7 @@ void _changeBPM(BuildContext context) {
   @override
   void dispose() {
     // Cancel the subscription and stop the metronome when the widget is disposed
-    _subscription.cancel();
+    _subscription?.cancel();
     _metronome.drain();
     super.dispose();
   }
