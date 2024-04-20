@@ -26,8 +26,10 @@ class ApplicationState extends State<OnPitch> {
   bool? onPitch;
   late Timer timer;
   String? previousNote = "";
+  double? previousFrequency;
+  late Timer resetTimer;
 
-  late StreamSubscription<List<dynamic>> _recorderStateSubscription;
+  late StreamSubscription<List<dynamic>>? _recorderStateSubscription;
 
   _initialize() async {
   print("Starting recorder...");
@@ -60,6 +62,21 @@ class ApplicationState extends State<OnPitch> {
         print("Error: $err");
       },
       onDone: () => {print("Isdone")});
+  }
+
+  void resetFrequencyIfSame(double newFrequency) {
+    if (previousFrequency == newFrequency) {
+      resetTimer.cancel(); // Cancel the previous timer
+    } else {
+      // Start a new timer when frequency changes
+      resetTimer = Timer(const Duration(seconds: 5), () {
+        setState(() {
+          frequency = 0; // Reset the frequency to 0
+        });
+      });
+    }
+
+    previousFrequency = newFrequency;
   }
 
   // Function to set the next target note
@@ -181,7 +198,7 @@ class ApplicationState extends State<OnPitch> {
 
   @override
   void dispose() {
-    _recorderStateSubscription.cancel();
+    _recorderStateSubscription?.cancel();
     timer.cancel(); // Cancel any timers
     flutterFft.stopRecorder(); // Stop any ongoing processes
     super.dispose();
@@ -194,6 +211,7 @@ class ApplicationState extends State<OnPitch> {
     note = flutterFft.getNote;
     octave = flutterFft.getOctave;
     onPitch = flutterFft.getIsOnPitch;
+    resetFrequencyIfSame(frequency!);
     setNextTargetNote();
     startTargetNoteTimer();
     super.initState();
@@ -206,7 +224,7 @@ class ApplicationState extends State<OnPitch> {
     if (isRecording) {
       bodyColor = isNoteHit ? Colors.green : Colors.red;
     }
-
+    resetFrequencyIfSame(frequency!);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
