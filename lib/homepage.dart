@@ -20,8 +20,8 @@ class MyHomePage extends StatelessWidget {
         title: Text(title),
       ),
       body: Container(
-        height: 800,
-        width: 800,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         color: mainTheme,
         child: ListView(
           children: const <Widget>[

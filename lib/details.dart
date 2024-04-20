@@ -14,8 +14,8 @@ class DetailsScreen extends StatelessWidget {
         title: Text(goal),
       ),
       body: Container(
-        height: 800,
-        width: 800,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         color: const Color.fromARGB(255, 186, 47, 211),
         child: ListView( 
           children: <Widget>[
@@ -54,6 +54,7 @@ class Lessons extends StatelessWidget {
           );
       },
       child: Container(
+        width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(2), // Adjust the padding as needed
         decoration: BoxDecoration(
           border: Border.all(
@@ -66,6 +67,7 @@ class Lessons extends StatelessWidget {
           children: [
             Container(
               height: 200,
+              width: MediaQuery.of(context).size.width,
               color: const Color.fromARGB(255, 182, 65, 202),
             ),
             Positioned(

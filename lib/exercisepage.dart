@@ -25,10 +25,12 @@ class MetronomeState extends State<MetronomeClass> {
   final _biggerFont = const TextStyle(fontSize: 175.0);
 
   bool _isPlaying = false;
+  
+  StreamSubscription<DateTime>? _subscription;
 
   Metronome _metronome =
       Metronome.epoch(Duration(milliseconds: (60000 / tempo).round()));
-  late StreamSubscription<DateTime>? _subscription;
+      
 
   void _play() {
     setState(() {

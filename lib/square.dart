@@ -7,7 +7,7 @@ List goals = ["icons/sing.png", "icons/speech.png", "icons/feminine.png", "icons
 
 class MyPadding extends StatelessWidget {
   final String text;
-
+  
   const MyPadding({
     super.key,
     this.text = "",
@@ -50,47 +50,50 @@ class MyPadding extends StatelessWidget {
         } else { throw ArgumentError("Incorrect Text"); }
       },
       
-      child: Container(
-        padding: const EdgeInsets.all(2), // Adjust the padding as needed
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: const Color.fromARGB(255, 182, 65, 202), // Border color
-            width: 2.0, // Border width
-          ),
-          borderRadius: BorderRadius.circular(4.0),
-        ),
-        child: Stack(
-          children: [
-            Container(
-              height: 200,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            border: Border.all(
               color: const Color.fromARGB(255, 182, 65, 202),
+              width: 2.0,
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                child: Text(
-                  text,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+          child: Stack(
+            children: [
+              Container(
+                height: 200,
+                width: MediaQuery.of(context).size.width,
+                color: const Color.fromARGB(255, 182, 65, 202),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+                  child: Text(
+                    text,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Positioned (
-              bottom: 10,
-              right: 0,
-              child: Image.asset(
-                goals[option],
-                width: 200,
-                height: 180,
-              )
-            )
-          ],
+              Positioned(
+                bottom: 10,
+                right: 0,
+                child: Image.asset(
+                  goals[option],
+                  width: MediaQuery.of(context).size.width / 4,
+                  height: 180,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),  
+        
     );
   }
 }

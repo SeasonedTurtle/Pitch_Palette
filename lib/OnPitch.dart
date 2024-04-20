@@ -29,7 +29,7 @@ class ApplicationState extends State<OnPitch> {
   double? previousFrequency;
   late Timer resetTimer;
 
-  late StreamSubscription<List<dynamic>>? _recorderStateSubscription;
+  StreamSubscription<List<dynamic>>? _recorderStateSubscription;
 
   _initialize() async {
   print("Starting recorder...");
@@ -197,14 +197,6 @@ class ApplicationState extends State<OnPitch> {
   }
 
   @override
-  void dispose() {
-    _recorderStateSubscription?.cancel();
-    timer.cancel(); // Cancel any timers
-    flutterFft.stopRecorder(); // Stop any ongoing processes
-    super.dispose();
-  }
-
-  @override
   void initState() {
     isRecording = flutterFft.getIsRecording;
     frequency = flutterFft.getFrequency;
@@ -219,12 +211,19 @@ class ApplicationState extends State<OnPitch> {
   }
 
   @override
+  void dispose() {
+    _recorderStateSubscription?.cancel();
+    timer.cancel(); // Cancel any timers
+    flutterFft.stopRecorder(); // Stop any ongoing processes
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Color bodyColor = Colors.red;
     if (isRecording) {
       bodyColor = isNoteHit ? Colors.green : Colors.red;
     }
-    resetFrequencyIfSame(frequency!);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -257,8 +256,8 @@ class ApplicationState extends State<OnPitch> {
         ],
       ),
       body: Container(
-        height: 800,
-        width: 800,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         color: bodyColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

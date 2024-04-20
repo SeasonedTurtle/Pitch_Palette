@@ -145,6 +145,8 @@ List<String> speechExcercises = [
   Map<String, List<String>> speechDirections = {
   // Tongue Twisters
   "Tongue Twisters": [
+    "Start on a low tempo then increase it as you improve!\n",
+    "If the phrase end with x3 then repeat the phrase 3 times\n",
     getRandomTongueTwister(tongueTwisters),
     getRandomTongueTwister(tongueTwisters),
     getRandomTongueTwister(tongueTwisters),
