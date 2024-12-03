@@ -106,7 +106,7 @@ class ApplicationState extends State<Pitch> {
   Widget build(BuildContext context) {
     frequencies.add(frequency!);
     print(frequencies);
-    double boxWidth = MediaQuery.of(context).size.width * 0.8;
+    //double boxWidth = MediaQuery.of(context).size.width * 0.8;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
